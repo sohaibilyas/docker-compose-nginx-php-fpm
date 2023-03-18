@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  app:
+    driver: bridge
+
+services:
+  nginx:
+    image: sohaibilyas/nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - app
+  php:
+    image: sohaibilyas/php:latest
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - app
